@@ -5,9 +5,9 @@ using MassTransitDemo.Messaging.Contract.Commands;
 
 namespace MassTransitDemo.Registration.Service
 {
-    internal class RegisterOrderConsumer : IConsumer<IRegisterOrder>
+    internal class RegisterOrderConsumer : IConsumer<MyOrder>
     {
-        public async Task Consume(ConsumeContext<IRegisterOrder> context)
+        public async Task Consume(ConsumeContext<MyOrder> context)
         {
             await Console.Out.WriteLineAsync($"Order with id {context.Message.Id} " +
                                              $"Content : {context.Message.Content} has been registered");
