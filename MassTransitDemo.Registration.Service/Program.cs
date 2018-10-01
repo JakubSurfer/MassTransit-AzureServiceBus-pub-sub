@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace MassTransitDemo.Registration.Service
 {
@@ -28,10 +29,11 @@ namespace MassTransitDemo.Registration.Service
         {
             var proxyType = _builder.GetImplementationType(typeof(IRegisterOrder));
             var actual = serializer.Deserialize<MyOrder>(reader);
+            var asdsa = JToken.FromObject(actual);
             var msg = new MyMessage
             {
-                Message = actual,
-                DestinationAddress = "sb://janysbtest.servicebus.windows.net/MassTransitDemo.Messaging.Contract.Commands/IRegisterOrder",
+                Message = asdsa,
+                DestinationAddress = AzureServiceBusConfiguration.AzureConnectionString,
                 MessageType = new[] {
                     "urn:message:MassTransitDemo.Messaging.Contract.Commands:IRegisterOrder",
                 "urn:message:MassTransitDemo.Registration.Service:MyOrder"},
