@@ -23,7 +23,7 @@ namespace MassTransitDemo.Messaging
                     hst.Password(RabbitMqConfiguration.Password);
                 });
 
-                MessageCorrelation.UseCorrelationId<IRegisterOrder>(x => x.Id);
+//                MessageCorrelation.UseCorrelationId<IRegisterOrder>(x => x.Id);
 
                 registrationAction?.Invoke(cfg, host);
             });
@@ -40,7 +40,7 @@ namespace MassTransitDemo.Messaging
                     hst.OperationTimeout = TimeSpan.FromSeconds(15);
                 });
 
-                MessageCorrelation.UseCorrelationId<IRegisterOrder>(x => x.Id);
+//                MessageCorrelation.UseCorrelationId<IRegisterOrder>(x => x.Id);
                 
                 registrationAction?.Invoke(cfg, host);
             });

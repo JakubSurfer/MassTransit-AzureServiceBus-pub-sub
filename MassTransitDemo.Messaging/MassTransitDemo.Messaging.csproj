@@ -78,7 +78,7 @@
   <ItemGroup>
     <Compile Include="BusConfiguration.cs" />
     <Compile Include="Configuration\AzureServiceBusConfiguration.cs" />
-    <Compile Include="Contract\Commands\IRegisterOrder.cs" />
+    <Compile Include="Contract\Commands\Icommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Configuration\RabbitMqConfiguration.cs" />
   </ItemGroup>

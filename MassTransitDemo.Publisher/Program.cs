@@ -20,24 +20,18 @@ namespace MassTransitDemo.Publisher
 
             while (true)
             {
-                Console.WriteLine("Register new order ...");
+                Console.WriteLine("Send a command ...");
 
                 var message = Console.ReadLine();
                 try
                 {
                     var corellationId = NewId.NextGuid();
 
-                    bus.Publish<IRegisterOrder>(new 
+                    bus.Publish<ICommand1>(new 
                     {
-                        Id = corellationId,
-                        Content = message
-                    }, x =>
-                    {
-                        x.Durable = true;
-                        x.CorrelationId = corellationId;
+                        Id = corellationId
                     });
-                    Console.WriteLine($"Order with id {corellationId} " +
-                                      $"Content : {message} has been sent");
+                    Console.WriteLine($"Command with id {corellationId} has been sent");
                 }
                 catch (Exception e)
                 {
